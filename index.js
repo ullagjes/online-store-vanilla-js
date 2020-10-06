@@ -10,3 +10,14 @@
 // summeres. Dette kan antakelig legges til samme funksjon som ovenfor. 
 // Det skal også være mulig å slette en vare, og dermed må summen i handlevognen endre seg. Altså må en ny knapp 
 // opprettes for hver gang arrayet oppdateres med en ny vare. 
+
+const handlekurv = document.querySelector("#handlekurv");
+
+
+function handle(vare, pris) {
+    let handlekurvInnhold = [];
+    handlekurvInnhold.push(vare, pris);
+    console.log(handlekurvInnhold);
+}
+
+handle("kjole", 200);
