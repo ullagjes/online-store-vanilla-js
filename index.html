@@ -5,22 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nettbutikk</title>
     <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./klasser.css">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
     <script src="./index.js" defer></script>
 </head>
 <body>
     <nav>
-        <!-- Legg inn navigasjonsbar på toppen, skal bestå av logo og handlekurv-->    
+        <h1 class="hovedLogo">Good as new</h1>
+        <div id="minNavigasjon">
+            <a href="" class="navigasjonLenke">Varesortiment 1</a>
+            <a href="" class="navigasjonLenke">Varesortment 2</a>
+            <a href="" class="navigasjonLenke">Varesortiment 3</a>
+            <button id="handlekurvBtn">
+                <img id="minHandlekurvLogo" src="./images/shopping-cart-icon.png">
+            </button>
+        </div>
     </nav>
     <main>
-        <!-- Skal bestå av en venstremarg hvor man kan velge mellom tre ulike kategorier, hver kategori redirecter til en intern html-side. Hovedinnholdet skal være en oversikt med seks ulike varer for hver kategori. Den tredje kategorien (hvis du får tid, skal være mulighet til å legge inn egen vare til salgs.) -->
-        
-        <section id="handlekurv">
+        <section id="mine-varer">
 
         </section>
+        <!-- Skal bestå av en venstremarg hvor man kan velge mellom tre ulike kategorier, hver kategori redirecter til en intern html-side. Hovedinnholdet skal være en oversikt med seks ulike varer for hver kategori. -->
+        
+        <div id="handlekurvGrid">
+            <h2 id="minHandlekurv">Handlekurv</h2> 
+            <div id="handlekurv">
+            </div>
+            <div class="handlekurvSum">
+                <span class="minSum">Total sum:</span>
+                <span class="sumHer"> kr</span>
+            </div>
+        </div> 
+        
 
     </main>
     <footer>
-    <!-- Kort footer med logo + kontaktinformasjon og lenke til sosiale medier-->    
+        
+            <nav>
+                <a href="">Lenke</a>
+                <a href="">Lenke</a>
+                <a href="">Lenke</a>
+            </nav>
+    
+         
     </footer>
     
 </body>

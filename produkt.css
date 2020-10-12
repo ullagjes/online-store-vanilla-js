@@ -1,0 +1,50 @@
+.produktGrid {
+    padding-top: 10em;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+}
+
+.previewGrid {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.preview {
+    width: 90%;
+    box-shadow: 2px 2px 5px 0px rgba(135,135,135,0.43);
+}
+
+.mainProdukt {
+    width: 60%;
+    margin: 0 2em;
+    box-shadow: 2px 2px 5px 0px rgba(135,135,135,0.43);
+}
+
+.produktDetaljer {
+    display: flex;
+    flex-direction: column;
+}
+
+.produktOverskrift {
+    font-size: 3rem;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.produktPris {
+    font-size: 2rem;
+}
+
+.sizeBtn {
+    border: none;
+    background-color: #9EC2BE;
+    padding: 2em
+}
+
+.handlekurvHovedBtn {
+    border: none;
+    background-color: #9EC2BE;
+    padding: 2em;
+}

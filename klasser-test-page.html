@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klasser</title>
+    <link rel="stylesheet" href="./klasser.css">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <script src="./index.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="">Vare-1</a>
+            <a href="">Vare-2</a>
+            <a href="">Vare-3</a>
+        </nav>
+        
+    </header>
+
+    <main>
+        <h1 class="hoved-tittel">Overskrift h1</h1>
+        <h2 class="varenavn">Overskrift h2</h2>
+        <h3 class="pris">Overskrift h3</h3>
+        <section id="mine-varer">
+            <div class="vare">
+                <img src="./images/test-bilde.jpg">
+                <h2 class="varenavn">Dette er varen min</h2>
+                <div class="priceAndBuy">
+                    <h3 class="pris">399,-</h3>
+                    <button class="buyBtn">Legg i handlekurv</button>
+                </div>
+            </div>
+        </section>
+        <div id="handlekurvGrid">
+            <h2 id="minHandlekurv">Handlekurv</h2> 
+            <div id="handlekurv">
+                <div class="handlekurvElement">
+                    <img src="./images/test-bilde.jpg">
+                    <span class="handlekurvProdukt">Bukse</span>
+                    <span class="handlekurvPris">299 kr</span>
+                    <input class="handlekurvKvantitet" type="number"> 
+                    <button class="fjernFraHandlekurv">Fjern</button>
+                </div>
+                <div class="handlekurvElement">
+                    <img src="./images/test-bilde.jpg">
+                    <span class="handlekurvProdukt">Bukse</span>
+                    <span class="handlekurvPris">299 kr</span>
+                    <input class="handlekurvKvantitet" type="number"> 
+                    <button class="fjernFraHandlekurv">Fjern</button>
+                </div>
+            </div>
+            <div class="handlekurvSum">
+                <span class="minSum">Total sum:</span>
+                <span class="sumHer">598 kr</span>
+            </div>
+        </div> 
+
+    </main>
+
+    <footer>
+        <nav>
+            <a href="">Lenke</a>
+            <a href="">Lenke</a>
+            <a href="">Lenke</a>
+        </nav>
+
+    </footer>
+    
+</body>
+</html>
