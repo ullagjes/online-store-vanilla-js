@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nettbutikk</title>
-    <link rel="stylesheet" href="./index.css">
-    <link rel="stylesheet" href="./klasser.css">
+    <link rel="stylesheet" href="./styles/klasser.css">
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-    <script src="./index.js" defer></script>
+    <script src="./scripts/index.js" type="module"></script>
 </head>
 <body>
     <nav>
@@ -19,23 +18,30 @@
             <button id="handlekurvBtn">
                 <img id="minHandlekurvLogo" src="./images/shopping-cart-icon.png">
             </button>
+            <div id="handlekurvGrid">
+                <h2 id="minHandlekurv">Handlekurv</h2> 
+                <div id="handlekurv"><p>Du har ingen varer i handlekurven.</p>
+                </div>
+                <div class="handlekurvSum">
+                    <span class="minSum">Total sum:</span>
+                    <span class="sumHer"></span>
+                </div>
+            </div> 
         </div>
     </nav>
     <main>
         <section id="mine-varer">
-
         </section>
-        <!-- Skal bestå av en venstremarg hvor man kan velge mellom tre ulike kategorier, hver kategori redirecter til en intern html-side. Hovedinnholdet skal være en oversikt med seks ulike varer for hver kategori. -->
         
-        <div id="handlekurvGrid">
+        <!--<div id="handlekurvGrid">
             <h2 id="minHandlekurv">Handlekurv</h2> 
-            <div id="handlekurv">
+            <div id="handlekurv"><p>Du har ingen varer i handlekurven.</p>
             </div>
             <div class="handlekurvSum">
                 <span class="minSum">Total sum:</span>
-                <span class="sumHer"> kr</span>
+                <span class="sumHer"></span>
             </div>
-        </div> 
+        </div> -->
         
 
     </main>

@@ -14,15 +14,15 @@
 }
 
 html {
-font-size: 62,5%;
+    font-size: 62,5%;
+    width: 100vw;
 }
 
 nav {
-    position: fixed;
-    width: 100vw;
     padding-bottom: 1.3em;
     background-color: #9EC2BE;
-    z-index: 0;
+    width: 100vw;
+    position: relative;
 }
 
 .hovedLogo {
@@ -33,40 +33,37 @@ nav {
 
 #minNavigasjon {
     display: flex;
-    align-content: space-between;
-    justify-content: space-between;
-}
-
-#minHandlekurvLogo {
-    width: 35px;
-    align-self: baseline;
 }
 
 .navigasjonLenke {
     color: black;
     text-decoration: none;
-    padding: 0 1em;
+    margin: 0 1em;
     align-self: baseline;
+}
+
+#minHandlekurvLogo {
+    width: 100%;
+    padding: .3em;
+    align-self: baseline;
+    border: none;
 }
 
 #handlekurvBtn {
     border: none;
-    background-color: #9EC2BE;
-    width: 38px;
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
     margin-left: auto;
     margin-right: 4em;
     align-self: baseline;
 }
 
-body {
-    position: relative;
-}
 
 /*Grid-system for alle varene på forsiden*/
 
 #mine-varer {
     width: 90vw;
-    padding-top: 6em;
     margin-left: auto;
     margin-right: auto;
     display: grid;
@@ -124,10 +121,12 @@ body {
 
 #handlekurvGrid {
     background-color: #9EC2BE;
+    width: 30vw;
     padding-bottom: 1em;
     position: absolute;
-    top: -100vh;
+    top: -300vh;
     right: 0;
+    transition: .3s;
 }
 
 #minHandlekurv {
@@ -135,6 +134,11 @@ body {
     color: #4C5E5C;
     padding: .5em;
     font-size: 2rem;
+}
+
+#handlekurv p {
+    text-align: center;
+    font-size: 1.2rem;
 }
 
 .handlekurvElement {
@@ -156,7 +160,7 @@ body {
 }
 
 .fjernFraHandlekurv {
-    width: 10%;
+    width: 12%;
     height: 2%;
     background-color: #4C5E5C;
     border: none;
@@ -187,7 +191,30 @@ body {
     border-bottom: 1px dotted black;
 }
 
+/*#handlekurvBurger {
+    width: 21px;
+    height: 29px;
+    display: grid;
+    grid-template-rows: 3px 3px;
+    align-content: space-between;
+    position: absolute;
+}
+#handlekurvBurger div {
+    background-color: black;
+}
+
+#first {
+    transform: translateY(13px) rotate(45deg);
+}
+
+#second {
+    transform: translateY(-13px) rotate(-45deg);
+}*/
+
 footer {
+    width: 100%;
+}
+footer nav {
     background-color: #9EC2BE;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
