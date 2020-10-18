@@ -1,63 +1,74 @@
 export let mineProdukter = [
     {
-    bilde:"./images/test-bilde.jpg",
-    produkt: "Vare 1", 
-    pris: 100
+        bilde: "./images/chair/art-deco-chair-1.jpg",
+        produkt: "Gold cage",
+        id: "Stoler",
+        pris: 1499
     },
     {
-    bilde:"./images/test-bilde.jpg",
-    produkt: "Vare 2", 
-    pris: 200
+        bilde: "./images/chair/art-deco-chair-2.jpg",
+        produkt: "Pink menage",
+        id: "Stoler",
+        pris: 2999
     },
     {
-    bilde:"./images/test-bilde.jpg",
-    produkt: "Vare 3", 
-    pris: 100
+        bilde: "./images//chair/art-deco-chair-3.jpg",
+        produkt: "Golden shell",
+        id: "Stoler",
+        pris: 1999
     },
     {
-    bilde:"./images/test-bilde.jpg",
-    produkt: "Vare 4", 
-    pris: 100
+        bilde: "./images//chair/art-deco-chair-4.jpg",
+        produkt: "Heaven's gateway",
+        id: "Stoler",
+        pris: 4999
     },
     {
-    bilde:"./images/test-bilde.jpg",
-    produkt: "Vare 5", 
-    pris: 100
+        bilde: "./images/lamp/deco-lamp-1.jpg",
+        produkt: "Classic",
+        id: "Lamper",
+        pris: 799
     },
     {
-    bilde: "./images/test-bilde.jpg", 
-    produkt: "Vare 6", 
-    pris: 100
+        bilde: "./images/lamp/deco-lamp-2.jpg",
+        produkt: "Style",
+        id: "Lamper",
+        pris: 899
     },
     {
-    bilde: "./images/test-bilde.jpg", 
-    produkt: "Vare 7", 
-    pris: 100
+        bilde: "./images/lamp/deco-lamp-3.jpg",
+        produkt: "Shade",
+        id: "Lamper",
+        pris: 1999
     },
     {
-    bilde: "./images/test-bilde.jpg", 
-    produkt: "Vare 8", 
-    pris: 100
+        bilde: "./images/lamp/deco-lamp-4.jpg",
+        produkt: "Bright",
+        id: "Lamper",
+        pris: 1199
     },
     {
-    bilde:"./images/test-bilde.jpg",
-    produkt: "Vare 9", 
-    pris: 100
+        bilde: "./images/table/art-deco-table-1.jpg",
+        produkt: "Coffee table",
+        id: "Bord",
+        pris: 6999
     },
     {
-    bilde:"./images/test-bilde.jpg",
-    produkt: "Vare 10", 
-    pris: 100
+        bilde: "./images/table/art-deco-table-2.jpg",
+        produkt: "Side table",
+        id: "Bord",
+        pris: 2599
     },
     {
-    bilde: "./images/test-bilde.jpg", 
-    produkt: "Vare 11", 
-    pris: 100
+        bilde: "./images/table/art-deco-table-3.jpg",
+        produkt: "Bar table",
+        id: "Bord",
+        pris: 1299
     },
     {
-    bilde: "./images/test-bilde.jpg", 
-    produkt: "Vare 12", 
-    pris: 100
+        bilde: "./images/table/art-deco-table-4.jpg",
+        produkt: "Lounge table",
+        id: "Bord",
+        pris: 2499
     }
-];;
-
+];

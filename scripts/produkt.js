@@ -10,7 +10,7 @@ function bytteBilde(event) {
     mittHovedbilde.innerHTML = ``;
 
     if(event.target === bildeAlternativ2){
-        mittHovedbilde.innerHTML += `<img class="mainProdukt" src="images/test-bilde-2.jpg">`;
+        mittHovedbilde.innerHTML += `<img class="mainProdukt" src="images/chair/deco-chair-1-side.jpg">`;
     }
 
     if(event.target === bildeAlternativ3){

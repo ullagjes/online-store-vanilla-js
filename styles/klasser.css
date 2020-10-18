@@ -1,12 +1,4 @@
 
-/* Mitt fargekart:
-    Basisfarge: #B4DED9
-    Mørkere variant: #809E9B
-    Lysere variant: #9EC2BE
-    Mørkeste variant: #4C5E5C
-    Lyseste variant: #BEEBE5
-*/
-
 * { 
     margin: 0;
     padding: 0;
@@ -15,20 +7,14 @@
 
 html {
     font-size: 62,5%;
-    width: 100vw;
+    font-family: 'Poiret One', cursive;
+    font-weight: 700;
 }
 
 nav {
     padding-bottom: 1.3em;
-    background-color: #9EC2BE;
-    width: 100vw;
+    width: 100%;
     position: relative;
-}
-
-.hovedLogo {
-    font-family: 'Permanent Marker', cursive;
-    font-size: 2.3rem;
-    text-align: center;
 }
 
 #minNavigasjon {
@@ -36,10 +22,15 @@ nav {
 }
 
 .navigasjonLenke {
-    color: black;
-    text-decoration: none;
+    color: #4C4C4C;
+    font-size: 1.5rem;
     margin: 0 1em;
     align-self: baseline;
+    cursor: pointer;
+}
+
+.navigasjonLenke:hover {
+    color: #A37EBA;
 }
 
 #minHandlekurvLogo {
@@ -47,19 +38,69 @@ nav {
     padding: .3em;
     align-self: baseline;
     border: none;
+    cursor: pointer;
 }
 
 #handlekurvBtn {
     border: none;
+    border-radius: 50%;
     width: 35px;
     height: 35px;
     background-color: transparent;
-    margin-left: auto;
-    margin-right: 4em;
+    position: relative;
+    top: .5em;
+    margin-left: .3em;
+    margin-right: 4.2em;
     align-self: baseline;
+    cursor: pointer;
+    z-index: 1;
 }
 
 
+#pMainPageSum {
+    align-self: baseline;
+    margin-left: auto;
+    float: right;
+}
+
+#kryss {
+    font-weight: 800;
+}
+
+/*OVERLAY*/
+
+#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 0;
+    transition: 0.5s;
+}
+
+/*INTRO */
+
+#intro {
+    height: 35vh;
+    position: relative;
+}
+
+#intro h1 {
+    position: absolute;
+    padding: .1em;
+    top: 1em;
+    left: .5em;
+    font-size: 3.5rem;
+    font-family: 'Limelight', cursive;
+    color:#e5df88;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+#intro img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
 /*Grid-system for alle varene på forsiden*/
 
 #mine-varer {
@@ -73,14 +114,13 @@ nav {
 
 /*CSS for produkt-kortene*/
 
-.hoved-tittel {
-    color: #4C5E5C;
-    font-size: 1rem;
+.varenavn {
+    color: 4c4c4c;
+    font-size: 1.5rem;
 }
 
-.varenavn {
-    color: #809E9B;
-    font-size: 1.5rem;
+.varenavn:hover {
+    text-decoration: underline;
 }
 
 .vare {
@@ -93,45 +133,55 @@ nav {
 
 .vare img {
     width: 100%;
+    object-fit: cover;
 }
 
 .priceAndBuy {
     margin-top: .5em;
     display: flex;
     flex-direction: column;
+    align-content: flex-end;
 }
 
 .pris {
-    color: #4C5E5C;
+    color: #4C4C4C;
     font-size: 1.3rem;
     padding-bottom: .5em;
     align-self: left;
 }
 
 .buyBtn {
-    background-color: #BEEBE5; 
+    margin-top: auto;
+    background-color: #e5df88; 
     border: none;
     padding: .5em;
     width: 100%;
     text-align: center;
+    justify-self: flex-end;
     align-self: center;
     color: #4C5E5C;
     font-size: 1rem;
+    cursor: pointer;
+}
+
+.buyBtn:hover {
+    color: white;
+    background-color:#A37EBA;
 }
 
 #handlekurvGrid {
-    background-color: #9EC2BE;
+    background-color: #e5df88;
     width: 30vw;
     padding-bottom: 1em;
     position: absolute;
     top: -300vh;
-    right: 0;
     transition: .3s;
+    z-index: 2;
 }
 
 #minHandlekurv {
     text-align: center;
-    color: #4C5E5C;
+    color: #4C4C4C;
     padding: .5em;
     font-size: 2rem;
 }
@@ -162,7 +212,7 @@ nav {
 .fjernFraHandlekurv {
     width: 12%;
     height: 2%;
-    background-color: #4C5E5C;
+    background-color: #a37eba;
     border: none;
     padding: .5em;
     color: white;
@@ -170,13 +220,13 @@ nav {
 }
 
 .handlekurvPris {
-    font-size: 1.5rem;
-    color: #4C5E5C; 
+    font-size: 1.1rem;
+    color: #4c4c4c; 
 }
 
 .handlekurvProdukt {
-    font-size: 1.5rem;
-    color: #4C5E5C;
+    font-size: 1.1rem;
+    color: #4c4c4c;
 }
 
 .handlekurvSum {
@@ -187,36 +237,28 @@ nav {
     align-items: center;
     font-size: 1.5rem;
     font-weight: 800;
-    color: #4C5E5C;
+    color: #4c4c4c;
     border-bottom: 1px dotted black;
 }
-
-/*#handlekurvBurger {
-    width: 21px;
-    height: 29px;
-    display: grid;
-    grid-template-rows: 3px 3px;
-    align-content: space-between;
-    position: absolute;
-}
-#handlekurvBurger div {
-    background-color: black;
-}
-
-#first {
-    transform: translateY(13px) rotate(45deg);
-}
-
-#second {
-    transform: translateY(-13px) rotate(-45deg);
-}*/
 
 footer {
     width: 100%;
 }
 footer nav {
-    background-color: #9EC2BE;
+    background-color:#e5df88;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     padding: 4em 5em;
+}
+
+/*UTVIDET VARE*/
+
+.vareUtvidet {
+    grid-column: 1 / 3;
+    grid-row: 5%;
+    display: flex;
+}
+
+.vareUtvidet img {
+    width: 100%;
 }
