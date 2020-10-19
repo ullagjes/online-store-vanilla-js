@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nettbutikk</title>
+    <title>Art Dec-o-dent</title>
     <link rel="stylesheet" href="./styles/klasser.css">
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
     <script src="./scripts/index.js" type="module"></script>
 </head>
 <body>
+    <!--NAVIGASJON-->
     <nav>
         <section id="intro">
             <h1>Art Dec-o-Dent</h1>
@@ -21,10 +22,15 @@
             <p class="navigasjonLenke lamper">Lamper</p>
             <p class="navigasjonLenke bord">Bord</p>
             <p class="navigasjonLenke stoler">Stoler</p>
+            <p class="navigasjonLenke inspirasjonGalleri">Bli inspirert</p>
+            <div id="searchAndBuy">
+                <input id="searchField" type="text" placeholder="Søk etter varer her">
                 <p id="pMainPageSum">Sum: <span id="desktopSum">0</span></p>
                 <button id="handlekurvBtn">
                     <img id="minHandlekurvLogo" src="./images/shopping-cart-icon.png">
                 </button>
+            </div>
+            
             <div id="handlekurvGrid">
                 <h2 id="minHandlekurv">Handlekurv</h2> 
                 <div id="handlekurv"><p>Du har ingen varer i handlekurven.</p>
@@ -35,9 +41,13 @@
                 </div>
             </div> 
         </div>
+        <div id="inspirasjon">
+        </div>
     </nav>
     <main>
+        <!--OVERLAY LEGGER SEG OVER HELE NÅR HANDLEKURVEN VISES-->
         <div id="overlay"></div>
+        <!--MINE-VARER-SECTION FYLLES OPP MED HTML OG CSS VIA JAVASCRIPT-->
         <section id="mine-varer"></section>
     </main>
 

@@ -2,38 +2,41 @@
 import {mineProdukter} from "./mine-produkter.js"
 const MINE_VARER = document.querySelector("#mine-varer");
 
+//______________________________________________________FORSIDE
 
-//HENTER ALLE PRODUKTENE OG GENERER FORSIDE
+// Henter objekter fra et importert array og lager HTML på forsiden.
 
-    let html = ``;
-    mineProdukter.forEach(el => {
-        html += `
-            <div class="vare">
-                <img src="${el.bilde}">
-                <h2 class="varenavn">${el.produkt}</h2>
-                <div class="priceAndBuy">
-                    <h3 class="pris">${el.pris}</h3>
-                    <button class="buyBtn">Legg i handlekurv</button>
-                </div>
+let html = ``;
+mineProdukter.forEach(el => {
+    html += `
+        <div class="vare">
+            <img src="${el.bilde}">
+            <h2 class="varenavn">${el.produkt}</h2>
+            <div class="priceAndBuy">
+                <h3 class="pris">${el.pris}</h3>
+                <button class="buyBtn">Legg i handlekurv</button>
             </div>
+        </div>
             `;
     });
-    MINE_VARER.innerHTML = html;
+MINE_VARER.innerHTML = html;
 
+//______________________________________________________HANDLEKURV
 
-
-// LEGG TIL VARE I HANDLEKURV
 const MIN_HANDLEKURV = document.querySelector("#handlekurv");
 let handlekurv = [];
-
-//Lager en unik knapp utav hver knapp med klassen .buyBtn
 
 let knapper = document.querySelectorAll(".buyBtn");
 for (const knapp of knapper) {
     knapp.addEventListener("click", leggTilVare)
     }
 
-// Denne delen av funksjonen sørger for å knytte "click"-eventen fra leggTilVare-funksjonen til alle "legg i handlekurv"-knappene mine på forsiden. Ved å identifisere innholdet til vare, pris og bilde-url, for så å koble dem til event.target kan jeg dermed "pushe" disse inn i handlekurv-arrayet mitt.
+//______________________________________________________HANDLEKURV: LEGG TIL-FUNKSJON
+
+//Knytter "click"-eventen fra leggTilVare-funksjonen til alle "legg i handlekurv"-knappene mine på forsiden. Pusher videre objekter inn i nytt array.
+// Oppretter ny HTML inne i handlekurven.
+//Legger også til fjern-funksjon på knappene som opprettes i handlekurven.
+//Kaller også på funkjsonen som summerer total sum i handlekurven.
 
 function leggTilVare(event) {
     let knapp = event.target;
@@ -50,12 +53,6 @@ function leggTilVare(event) {
         }
     );
     
-    //Kaller på funksjonen som summerer pris-valuen min, som dermed oppdaterer handlekurvens totalsum
-
-    oppdaterHandlevogn();
-
-    //Denne delen av funksjonen oppretter et nytt div-element i handlekurven min. Dette div-elementet henter verdier fra handlekurv-arrayet og bruker egne klasser fra klasser.css for å opprette varene inne i handlekurven.
-
     let html = ``;
     handlekurv.forEach(el => {
         html += `
@@ -63,24 +60,25 @@ function leggTilVare(event) {
                 <img src=${el.bilde}>
                 <span class="handlekurvProdukt">${el.vare}</span>
                 <span class="handlekurvPris">${el.pris}</span>
-                <input class="handlekurvKvantitet" type="number"> 
                 <button class="fjernFraHandlekurv">Fjern</button>
         </div>
         `
     });
     MIN_HANDLEKURV.innerHTML = html;
 
-    //Denne delen av funksjonen sørger for å koble fjernVare-funksjonen min til alle fjern-knappene som opprettes i handlekurven min
-
     let fjernKnapper = document.querySelectorAll(".fjernFraHandlekurv");
 
     for (const fjernKnapp of fjernKnapper) {
         fjernKnapp.addEventListener("click", fjernVare);
     }
+    oppdaterHandlevogn();
 }
 
-//FJERNE VARER FRA HANDLEKURV
-//Denne funksjonen fjerner både innholdet i arrayet og html-innholdet i handlekurven
+//______________________________________________________HANDLEKURV: FJERN-FUNKSJON
+
+//Fjerner innholdet i handlekurv-arrayet og handlekurv-HTML for hver vare.
+//Gir også bruker beskjed når handlekurven er tom.
+//Kaller samme funksjon for å oppdatere totalsummen i handlekurven.
 
 function fjernVare(event) {
     let fjernObjekt = event.target;
@@ -95,8 +93,6 @@ function fjernVare(event) {
             }
         }
 
-    //bruker en if-statement, slik at denne beskjeden dukker opp dersom kurven er tom
-
     if (handlekurv.length === 0) {
         MIN_HANDLEKURV.innerHTML = `
         <div id="handlekurv"><p>Du har ingen varer i handlekurven.</p>
@@ -104,12 +100,12 @@ function fjernVare(event) {
         `
         }
 
-    //Kaller på den samme funksjonen her også for å oppdatere summen i handlevognen
-
     oppdaterHandlevogn();
 }
 
-//Denne funksjonen legger sammen pris-valuen som er igjen i handlekurva både etter at jeg har lagt til og tatt ut elementer fra handlekurv-arrayet
+//______________________________________________________HANDLEKURV: TOTAL-SUM
+
+//Sum baserer seg på pris-value i handlekurv-arrayet.
 
 let minSumHer = document.querySelector(".sumHer");
 let sumDisplayMainPage = document.querySelector("#desktopSum")
@@ -124,7 +120,44 @@ function oppdaterHandlevogn () {
     sumDisplayMainPage.innerText = sumHer + "kr";
 }
 
-//FILTRERING
+//______________________________________________________HANDLEKURV: VIS OG SKJUL HANDLEKURV-DIV
+
+//Bruker boolean + if-setning for å gjøre handlekurven synlig og usynlig når bruker trykker på kurv-ikonet.
+
+const KURV_IKON = document.querySelector("#handlekurvBtn");
+let overlayEffect = document.querySelector("#overlay");
+
+let knappTrykket = true;
+
+function visHandlekurv() {
+
+    KURV_IKON.style.backgroundColor = "transparent";
+    KURV_IKON.style.border = "none";
+
+    if (knappTrykket === true) {
+        handlekurvGrid.style.top = "45vh";
+        handlekurvGrid.style.right = "0";
+        KURV_IKON.style.backgroundColor = "#a37eba";
+        KURV_IKON.style.border = "1px solid black";
+        KURV_IKON.innerHTML = `<span id="kryss">X</span>`
+        overlayEffect.style.height = "150%";
+        overlayEffect.style.backgroundColor = "rgba(0, 0, 0, 0.6)";
+    } else {
+        handlekurvGrid.style.top = "-300vh";
+        handlekurvGrid.style.right = "0";
+        overlayEffect.style.height = "0%";
+        KURV_IKON.innerHTML = `<img id="minHandlekurvLogo" src="./images/shopping-cart-icon.png">`;
+    }
+
+    knappTrykket = !knappTrykket;
+}
+
+KURV_IKON.addEventListener("click", visHandlekurv);
+
+//______________________________________________________FILTRERING
+
+//Bruker .filter på arrayet som inneholder alle produktene for nettsiden.
+// Oppretter dermed HTML basert på innholdet i det filtrerte arrayet. 
 
 const alleVarer = document.querySelector(".alleVarer");
 
@@ -155,6 +188,7 @@ const lampe = document.querySelector(".lamper");
 const bord = document.querySelector(".bord");
 const stoler = document.querySelector(".stoler");
 
+
 function filtrer(event){
     let filterKnapp = event.target;
     let filtrerteProdukter = mineProdukter.filter(el => 
@@ -174,7 +208,7 @@ function filtrer(event){
                 </div>
             </div>
             `;
-        
+    
     });
 
     MINE_VARER.innerHTML = html;
@@ -187,50 +221,88 @@ lampe.addEventListener("click", filtrer)
 bord.addEventListener("click", filtrer)
 stoler.addEventListener("click", filtrer)
 
+//______________________________________________________BILDEGALLERI/INSPIRASJON
 
-//Handlekurv skal dukke opp når jeg trykker på handlekurvknappen
+//Når bruker trykker på "Bli inspirert" i navigasjons-baren, dukker det opp et bildegalleri. 
+//Bildegalleriet baserer seg på et eget array.
+//Bruker boolean og if-setning for å vise og skjule galleriet.
 
-const KURV_IKON = document.querySelector("#handlekurvBtn");
-let overlayEffect = document.querySelector("#overlay");
+let inspirasjonKnapp = document.querySelector(".inspirasjonGalleri");
+const inspirasjon = document.querySelector("#inspirasjon");
+const bildeGalleri = ["./images/inspiration/art-deco-interior-1.jpg", "./images/inspiration/art-deco-interior-2.jpg", "./images/inspiration/art-deco-interior-3.jpg", "./images/inspiration/art-deco-interior.jpg"];
 
-let knappTrykket = true;
+let inspirasjonTrykket = true;
 
-function visHandlekurv() {
-
-    KURV_IKON.style.backgroundColor = "transparent";
-    KURV_IKON.style.border = "none";
-
-    if (knappTrykket === true) {
-        handlekurvGrid.style.top = "43vh";
-        handlekurvGrid.style.right = "0";
-        KURV_IKON.style.backgroundColor = "#a37eba";
-        KURV_IKON.style.border = "1px solid black";
-        KURV_IKON.innerHTML = `<span id="kryss">X</span>`
-        overlayEffect.style.height = "200%";
-        overlayEffect.style.backgroundColor = "rgba(0, 0, 0, 0.6)";
-    } else {
-        handlekurvGrid.style.top = "-300vh";
-        handlekurvGrid.style.right = "0";
-        overlayEffect.style.height = "0%";
-        KURV_IKON.innerHTML = `<img id="minHandlekurvLogo" src="./images/shopping-cart-icon.png">`;
+function visBildegalleri() {
+    
+    let i = 1;
+    function byttBilde() {
+        if(i >= bildeGalleri.length) {
+            i = 0;
+        }
+        
+        const nyttBilde = bildeGalleri[i];
+        inspirasjon.innerHTML = `<img src="${nyttBilde}">`;
+        i++;
     }
 
-    knappTrykket = !knappTrykket;
+    if (inspirasjonTrykket === true) {
+        inspirasjonKnapp.classList.add("active")
+        inspirasjon.innerHTML = `<img src="./images/inspiration/art-deco-interior.jpg">`
+        inspirasjon.style.visibility = "visible";
+        inspirasjon.style.height = "80vh"
+
+        inspirasjon.addEventListener("click", byttBilde)
+        inspirasjon.style.paddingTop = "1em"
+        
+    } else {
+        inspirasjon.style.visibility = "hidden";
+        inspirasjon.style.height = "0"
+        inspirasjonKnapp.classList.remove("active")
+
+    }
+    inspirasjonTrykket = !inspirasjonTrykket;
 }
 
-KURV_IKON.addEventListener("click", visHandlekurv);
+inspirasjonKnapp.addEventListener("click", visBildegalleri);
 
 
+//______________________________________________________SØKEFUNKSJON
 
+//Bruker .filter og value for text-input for å endre arrayet for alle produktene for nettsiden.
+//Oppretter ny HTML basert på det oppdaterte arrayet.
 
+let searchBar = document.querySelector("#searchField");
 
+function search(event) {
+    let mySearch = event.target.value.toLowerCase();
 
-//_______________________ DIVERSE NOTATER
+    let mySearchArray = mineProdukter.filter((el) => {
+        return (el.id.toLowerCase().includes(mySearch) || el.produkt.toLowerCase().includes(mySearch));
+    });
 
-// grunnleggende struktur for funksjon til flere knapper
+    MINE_VARER.innerHTML = ``
+    
+        let html = ``;
+        mySearchArray.forEach(el => {
+            html += `
+                <div class="vare">
+                    <img src="${el.bilde}">
+                    <h2 class="varenavn">${el.produkt}</h2>
+                    <div class="priceAndBuy">
+                        <h3 class="pris">${el.pris}</h3>
+                        <button class="buyBtn">Legg i handlekurv</button>
+                    </div>
+                </div>
+                `;
+        
+        });
+    MINE_VARER.innerHTML = html;
+    
+    let knapper = document.querySelectorAll(".buyBtn");
+    for (const knapp of knapper) {
+    knapp.addEventListener("click", leggTilVare)
+    }
+}
 
-/*let knapper = document.querySelectorAll(".buyBtn");
-
-for(const knapp of knapper) {
-    knapp.addEventListener("click", test)
-}*/
+searchBar.addEventListener("keyup", search) 
