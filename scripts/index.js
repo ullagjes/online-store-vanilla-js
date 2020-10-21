@@ -10,7 +10,7 @@ let html = ``;
 mineProdukter.forEach(el => {
     html += `
         <div class="vare">
-            <img src="${el.bilde}">
+            <img src="${el.bilde}" alt="${el.alt}">
             <h2 class="varenavn">${el.produkt}</h2>
             <div class="priceAndBuy">
                 <h3 class="pris">${el.pris}</h3>
@@ -44,35 +44,50 @@ function leggTilVare(event) {
     let minVare = trykketInnhold.querySelector(".varenavn").innerText;
     let minPris = trykketInnhold.querySelector(".pris").innerText;
     let mittBilde = trykketInnhold.querySelector("img").src;
-
+        
     handlekurv.push(
         {
-            bilde: mittBilde,
-            vare: minVare,
-            pris: Number(minPris)
+        bilde: mittBilde,
+        vare: minVare,
+        pris: Number(minPris),
+        id:""
         }
     );
-    
+
+    for(let i = 0; i < handlekurv.length; i++){
+        handlekurv[i].id = "produkt-" + i;
+    }
+
+    console.log(handlekurv);
+
+
     let html = ``;
     handlekurv.forEach(el => {
         html += `
-        <div class="handlekurvElement">
-                <img src=${el.bilde}>
+        <div class="handlekurvElement ${el.id}">
+                <img src=${el.bilde} alt="${el.alt}">
                 <span class="handlekurvProdukt">${el.vare}</span>
                 <span class="handlekurvPris">${el.pris}</span>
                 <button class="fjernFraHandlekurv">Fjern</button>
         </div>
         `
     });
-    MIN_HANDLEKURV.innerHTML = html;
-
+    MIN_HANDLEKURV.innerHTML = html;    
+    
+    //Legge til eventlistener på fjernknapper
     let fjernKnapper = document.querySelectorAll(".fjernFraHandlekurv");
 
     for (const fjernKnapp of fjernKnapper) {
         fjernKnapp.addEventListener("click", fjernVare);
     }
+
     oppdaterHandlevogn();
 }
+
+/*if(handlekurv.some(el => el.vare === minVare)){
+        alert("Denne varen ligger allerede i handlekurven. I handlekurven kan du velge hvor mange du vil ha av denne varen")
+    } else {}*/
+
 
 //______________________________________________________HANDLEKURV: FJERN-FUNKSJON
 
@@ -84,22 +99,23 @@ function fjernVare(event) {
     let fjernObjekt = event.target;
     let valgtProdukt = fjernObjekt.parentElement;
     let valgtProduktNavn = valgtProdukt.querySelector(".handlekurvProdukt").innerText;
-
+    
     for(let i = 0; i < handlekurv.length; i++) {
 
-        if(handlekurv[i].vare === valgtProduktNavn) {
+        if(handlekurv[i].vare === valgtProduktNavn && valgtProdukt.classList.contains(handlekurv[i].id)) {
             handlekurv.splice(i, 1);
             fjernObjekt.parentElement.remove();
             }
         }
 
-    if (handlekurv.length === 0) {
+        if (handlekurv.length === 0) {
         MIN_HANDLEKURV.innerHTML = `
         <div id="handlekurv"><p>Du har ingen varer i handlekurven.</p>
             </div>
         `
         }
 
+    console.log(handlekurv);
     oppdaterHandlevogn();
 }
 
@@ -108,7 +124,7 @@ function fjernVare(event) {
 //Sum baserer seg på pris-value i handlekurv-arrayet.
 
 let minSumHer = document.querySelector(".sumHer");
-let sumDisplayMainPage = document.querySelector("#desktopSum")
+let sumDisplayMainPage = document.querySelector("#desktopSum");
 
 function oppdaterHandlevogn () {
     let sumHer = 0;
@@ -119,6 +135,7 @@ function oppdaterHandlevogn () {
     minSumHer.innerText = sumHer + "kr";
     sumDisplayMainPage.innerText = sumHer + "kr";
 }
+
 
 //______________________________________________________HANDLEKURV: VIS OG SKJUL HANDLEKURV-DIV
 
@@ -154,7 +171,7 @@ function visHandlekurv() {
 
 KURV_IKON.addEventListener("click", visHandlekurv);
 
-//______________________________________________________FILTRERING
+//______________________________________________________FILTRERING 
 
 //Bruker .filter på arrayet som inneholder alle produktene for nettsiden.
 // Oppretter dermed HTML basert på innholdet i det filtrerte arrayet. 
@@ -166,7 +183,7 @@ function nyForside() {
     mineProdukter.forEach(el => {
         html += `
             <div class="vare">
-                <img src="${el.bilde}">
+                <img src="${el.bilde}" alt="${el.alt}">
                 <h2 class="varenavn">${el.produkt}</h2>
                 <div class="priceAndBuy">
                     <h3 class="pris">${el.pris}</h3>
@@ -200,7 +217,7 @@ function filtrer(event){
     filtrerteProdukter.forEach(el => {
         html += `
             <div class="vare">
-                <img src="${el.bilde}">
+                <img src="${el.bilde}" alt="${el.alt}">
                 <h2 class="varenavn">${el.produkt}</h2>
                 <div class="priceAndBuy">
                     <h3 class="pris">${el.pris}</h3>
@@ -248,7 +265,7 @@ function visBildegalleri() {
 
     if (inspirasjonTrykket === true) {
         inspirasjonKnapp.classList.add("active")
-        inspirasjon.innerHTML = `<img src="./images/inspiration/art-deco-interior.jpg">`
+        inspirasjon.innerHTML = `<img src="./images/inspiration/art-deco-interior.jpg" alt="art-deco-inspirert interiør">`
         inspirasjon.style.visibility = "visible";
         inspirasjon.style.height = "80vh"
 
@@ -259,7 +276,6 @@ function visBildegalleri() {
         inspirasjon.style.visibility = "hidden";
         inspirasjon.style.height = "0"
         inspirasjonKnapp.classList.remove("active")
-
     }
     inspirasjonTrykket = !inspirasjonTrykket;
 }
@@ -287,7 +303,7 @@ function search(event) {
         mySearchArray.forEach(el => {
             html += `
                 <div class="vare">
-                    <img src="${el.bilde}">
+                    <img src="${el.bilde}" alt="${el.alt}">
                     <h2 class="varenavn">${el.produkt}</h2>
                     <div class="priceAndBuy">
                         <h3 class="pris">${el.pris}</h3>
@@ -298,7 +314,7 @@ function search(event) {
         
         });
     MINE_VARER.innerHTML = html;
-    
+
     let knapper = document.querySelectorAll(".buyBtn");
     for (const knapp of knapper) {
     knapp.addEventListener("click", leggTilVare)
