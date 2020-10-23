@@ -139,6 +139,11 @@ nav {
     cursor: pointer;
 }
 
+#kryssUt {
+    font-weight: 1000;
+    padding: 0 .3em;
+}
+
 /*VARER - GRIDSYSTEM*/
 
 #mine-varer {
@@ -155,10 +160,6 @@ nav {
 .varenavn {
     color: 4c4c4c;
     font-size: 1.5rem;
-}
-
-.varenavn:hover {
-    text-decoration: underline;
 }
 
 .vare {
@@ -198,8 +199,10 @@ nav {
     justify-self: flex-end;
     align-self: center;
     color: #4C5E5C;
-    font-size: 1rem;
+    font-size: 1.3rem;
+    font-weight: 900;
     cursor: pointer;
+    font-family: 'Poiret One', cursive;
 }
 
 .buyBtn:hover {
@@ -286,10 +289,6 @@ nav {
 /*FOOTER*/
 footer {
     width: 100%;
-}
-footer nav {
+    height: 20vh;
     background-color:#e5df88;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    padding: 4em 5em;
 }

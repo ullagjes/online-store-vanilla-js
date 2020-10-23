@@ -29,6 +29,7 @@ let handlekurv = [];
 let knapper = document.querySelectorAll(".buyBtn");
 for (const knapp of knapper) {
     knapp.addEventListener("click", leggTilVare)
+    knapp.addEventListener("click", visHandlekurv)
     }
 
 //______________________________________________________HANDLEKURV: LEGG TIL-FUNKSJON
@@ -53,13 +54,12 @@ function leggTilVare(event) {
         id:""
         }
     );
+    
+    //Her benytter jeg meg av en loop som lager et nytt tall for handlekurv-key id. Dermed vil hver vare som legges til i handlekurv ha en unik id. Dette er en fordel dersom bruker legger til flere av samme vare i handlevognen og kanskje ønsker å slette én av varene. 
 
     for(let i = 0; i < handlekurv.length; i++){
         handlekurv[i].id = "produkt-" + i;
     }
-
-    console.log(handlekurv);
-
 
     let html = ``;
     handlekurv.forEach(el => {
@@ -83,11 +83,6 @@ function leggTilVare(event) {
 
     oppdaterHandlevogn();
 }
-
-/*if(handlekurv.some(el => el.vare === minVare)){
-        alert("Denne varen ligger allerede i handlekurven. I handlekurven kan du velge hvor mange du vil ha av denne varen")
-    } else {}*/
-
 
 //______________________________________________________HANDLEKURV: FJERN-FUNKSJON
 
@@ -115,7 +110,6 @@ function fjernVare(event) {
         `
         }
 
-    console.log(handlekurv);
     oppdaterHandlevogn();
 }
 
@@ -157,7 +151,7 @@ function visHandlekurv() {
         KURV_IKON.style.backgroundColor = "#a37eba";
         KURV_IKON.style.border = "1px solid black";
         KURV_IKON.innerHTML = `<span id="kryss">X</span>`
-        overlayEffect.style.height = "150%";
+        overlayEffect.style.height = "250%";
         overlayEffect.style.backgroundColor = "rgba(0, 0, 0, 0.6)";
     } else {
         handlekurvGrid.style.top = "-300vh";
@@ -170,6 +164,7 @@ function visHandlekurv() {
 }
 
 KURV_IKON.addEventListener("click", visHandlekurv);
+overlayEffect.addEventListener("click", visHandlekurv);
 
 //______________________________________________________FILTRERING 
 
@@ -232,6 +227,7 @@ function filtrer(event){
     let knapper = document.querySelectorAll(".buyBtn");
     for (const knapp of knapper) {
     knapp.addEventListener("click", leggTilVare)
+    knapp.addEventListener("click", visHandlekurv)
     }
 }
 lampe.addEventListener("click", filtrer)
@@ -264,8 +260,8 @@ function visBildegalleri() {
     }
 
     if (inspirasjonTrykket === true) {
-        inspirasjonKnapp.classList.add("active")
-        inspirasjon.innerHTML = `<img src="./images/inspiration/art-deco-interior.jpg" alt="art-deco-inspirert interiør">`
+        inspirasjonKnapp.innerHTML = `<span id="kryssUt" class="active">X</span> Bli inspirert`
+        inspirasjon.innerHTML = `<img src="./images/inspiration/art-deco-interior.jpg" alt="bilde av art-deco-inspirert interiør">`
         inspirasjon.style.visibility = "visible";
         inspirasjon.style.height = "80vh"
 
@@ -273,6 +269,7 @@ function visBildegalleri() {
         inspirasjon.style.paddingTop = "1em"
         
     } else {
+        inspirasjonKnapp.innerText = "Bli inspirert"
         inspirasjon.style.visibility = "hidden";
         inspirasjon.style.height = "0"
         inspirasjonKnapp.classList.remove("active")
@@ -318,6 +315,7 @@ function search(event) {
     let knapper = document.querySelectorAll(".buyBtn");
     for (const knapp of knapper) {
     knapp.addEventListener("click", leggTilVare)
+    knapp.addEventListener("click", visHandlekurv)
     }
 }
 
