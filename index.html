@@ -14,20 +14,21 @@
     <nav>
         <section id="intro">
             <h1>Art Dec-o-Dent</h1>
-            <img src="./images/art-deco-background.jpg">
+            <img src="./images/art-deco-background.jpg" alt="art-deco-inspirert mønster. Bakgrunnsbilde">
         </section>
             
         <div id="minNavigasjon">
-            <p class="navigasjonLenke alleVarer">Alle varer</p>
-            <p class="navigasjonLenke lamper">Lamper</p>
-            <p class="navigasjonLenke bord">Bord</p>
-            <p class="navigasjonLenke stoler">Stoler</p>
-            <p class="navigasjonLenke inspirasjonGalleri">Bli inspirert</p>
+            <a class="navigasjonLenke alleVarer" href="#">Alle varer</a>
+            <a class="navigasjonLenke lamper" href="#">Lamper</a>
+            <a class="navigasjonLenke bord" href="#">Bord</a>
+            <a class="navigasjonLenke stoler" href="#">Stoler</a>
+            <a class="navigasjonLenke inspirasjonGalleri" href="#">Bli inspirert</a>
             <!--SØKEFELT OG HANDLEKURV-->
             <div id="searchAndBuy">
+                <label for="searchField">Søk</label>
                 <input id="searchField" type="text" placeholder="Søk etter varer her">
                 <p id="pMainPageSum">Sum: <span id="desktopSum">0</span></p>
-                <button id="handlekurvBtn">
+                <button id="handlekurvBtn" tabindex="0">
                     <img id="minHandlekurvLogo" src="./images/shopping-cart-icon.png" alt="Handlekurv-ikon med lenke som fører videre til en oversikt over varene som er lagt i handlekurven.">
                 </button>
             </div>
@@ -43,8 +44,7 @@
             </div> 
         </div>
         <!--INSPIRASJON POPUP-->
-        <div id="inspirasjon">
-        </div>
+        <div id="inspirasjon"></div>
     </nav>
     <main>
         <!--OVERLAY LEGGER SEG OVER HELE NÅR HANDLEKURVEN VISES-->

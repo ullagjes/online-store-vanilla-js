@@ -30,7 +30,7 @@ let knapper = document.querySelectorAll(".buyBtn");
 for (const knapp of knapper) {
     knapp.addEventListener("click", leggTilVare)
     knapp.addEventListener("click", visHandlekurv)
-    }
+}
 
 //______________________________________________________HANDLEKURV: LEGG TIL-FUNKSJON
 
@@ -74,7 +74,7 @@ function leggTilVare(event) {
     });
     MIN_HANDLEKURV.innerHTML = html;    
     
-    //Legge til eventlistener på fjernknapper
+    //Legger til eventlistener på fjernknapper
     let fjernKnapper = document.querySelectorAll(".fjernFraHandlekurv");
 
     for (const fjernKnapp of fjernKnapper) {
@@ -116,6 +116,7 @@ function fjernVare(event) {
 //______________________________________________________HANDLEKURV: TOTAL-SUM
 
 //Sum baserer seg på pris-value i handlekurv-arrayet.
+//Summen vises både i handlekurv og i navigasjonsbar på forsiden
 
 let minSumHer = document.querySelector(".sumHer");
 let sumDisplayMainPage = document.querySelector("#desktopSum");
@@ -133,7 +134,7 @@ function oppdaterHandlevogn () {
 
 //______________________________________________________HANDLEKURV: VIS OG SKJUL HANDLEKURV-DIV
 
-//Bruker boolean + if-setning for å gjøre handlekurven synlig og usynlig når bruker trykker på kurv-ikonet.
+//Bruker boolean + if-setning for å gjøre handlekurven synlig og usynlig når bruker trykker på kurv-ikonet eller direkte på overlay.
 
 const KURV_IKON = document.querySelector("#handlekurvBtn");
 let overlayEffect = document.querySelector("#overlay");
@@ -191,6 +192,7 @@ function nyForside() {
     let knapper = document.querySelectorAll(".buyBtn");
     for (const knapp of knapper) {
     knapp.addEventListener("click", leggTilVare)
+    knapp.addEventListener("click", visHandlekurv)
     }
 }
 

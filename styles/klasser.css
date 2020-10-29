@@ -48,6 +48,7 @@ nav {
     display: flex;
     justify-content: center;
     align-items: baseline;
+    background-color: #e5df88;
 }
 
 .navigasjonLenke {
@@ -55,10 +56,18 @@ nav {
     font-size: 1.5rem;
     margin: 0 1em;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .navigasjonLenke:hover {
     color: #A37EBA;
+}
+
+label {
+    font-family: 'Poiret One', cursive;
+    font-size: 1.5rem;
+    color: #4C4C4C;
+    margin: 0 .5em;
 }
 
 /*NAVIGASJON: SØK, HANDLEKURV OG TOTALSUM*/
@@ -72,7 +81,7 @@ nav {
     width: 15em;
     height: 2.5em;
     font-family: 'Poiret One', cursive;
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
 #minHandlekurvLogo {
@@ -271,8 +280,6 @@ nav {
     font-size: 1.1rem;
     color: #4c4c4c;
 }
-
-
 
 .handlekurvSum {
     display: flex;
